@@ -1,3 +1,6 @@
+
+
+
 ## 停止 重启
 pkill svnserve
 svnserve -d -r /var/svn/svnrepos
@@ -39,3 +42,10 @@ admin=will
 svnserve -d -r /var/svn/svnrepos
 
 firewall-cmd --zone=public --add-port=3690/tcp --permanen
+
+
+
+
+
+
+
