@@ -1,0 +1,41 @@
+
+pkill svnserve
+svnserve -d -r /var/svn/svnrepos
+
+
+svn://192.168.2.19/svnrepos
+
+cd /var/svn/svnrepos
+svnserve.conf
+
+##安装
+yum install subversion
+mkdir -p /var/svn/svnrepos
+svnadmin create /var/svn/svnrepos
+
+cd /var/svn/svnrepos
+
+
+vim conf/svnserve.conf
+[general]
+
+
+anon-access = none
+auth-access = write
+password-db = passwd
+authz-db = authz
+realm =/var/svn/svnrepos
+
+vim conf/pass
+will = 123
+
+
+vim conf/authz
+[group]
+admin=will
+[/]
+@admin = rw
+
+svnserve -d -r /var/svn/svnrepos
+
+firewall-cmd --zone=public --add-port=3690/tcp --permanen
